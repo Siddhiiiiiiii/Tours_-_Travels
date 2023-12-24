@@ -1,0 +1,41 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #a40202; /* Change the background color as needed */
+    color: white; /* Change the text color as needed */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 100px; /* Adjust the width of the logo as needed */
+    height: auto; /* Maintain the aspect ratio of the logo */
+    margin-right: 10px; /* Add some space between the logo and the text */
+  }
+  
+  .nav-links {
+    flex-grow: 0.75; /* Adjust flex-grow to cover 75% of the navbar */
+    display: flex;
+    justify-content: flex-end; /* Align the navigation links to the right */
+  }
+  
+  .nav-links a {
+    padding: 10px 15px; /* Add padding to each navigation link */
+    text-decoration: none;
+    color: white; /* Change the text color of navigation links as needed */
+    font-size: 1.2rem; /* Increase font size */
+    font-weight: bold; /* Add bold styling */
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline; /* Add underline on hover */
+    font-size: 1.3rem; /* Increase font size on hover */
+  }
+  
