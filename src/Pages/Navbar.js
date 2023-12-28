@@ -15,6 +15,7 @@ const Navbar = () => {
         <a href="/">Home</a>
         <a href="/About">About</a>
         <a href="/Contact">Contact</a>
+        <a href="/Payment">Payment</a>
         <a href="/Login">Login</a>
         <a href="/Register" style={{ color: 'red', background: 'white' }}>Register</a>
       </div>

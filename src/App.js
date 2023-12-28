@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Navbar from './Pages/Navbar';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import Payment from './Pages/Payment';
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Payment" element={<Payment />} />
 
         </Routes>
-     <Footer />
+     {/* <Footer /> */}
     </div>
     </Router>
   );
