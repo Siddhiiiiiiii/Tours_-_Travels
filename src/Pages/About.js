@@ -14,8 +14,6 @@ const About = () => {
       </div>
     </div>
 
-
-
   {/*our team by numbers.*/}
       <div class="bg-white py-6 sm:py-8 lg:py-12 ">
         <div class="mx-auto max-w-screen-lg px-4 md:px-8">
@@ -25,7 +23,6 @@ const About = () => {
 
             <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">At Sidhesh Tour and Travel, we believe in transforming your travel dreams into reality. Nestled in the heart of Bhusawal, our travel agency is more than just a destination management company; it's a passionate team of travel enthusiasts dedicated to curating extraordinary experiences for you.</p>
           </div>
-
 
           <div class="grid grid-cols-2 gap-6 rounded-lg bg-danger p-6 md:grid-cols-4 md:gap-8 md:p-8">
 

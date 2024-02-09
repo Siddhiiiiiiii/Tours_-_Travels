@@ -7,6 +7,7 @@ import Navbar from './Pages/Navbar';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Payment from './Pages/Payment';
+import Gallery from './Pages/Gallery';
 
 function App() {
   return (
@@ -19,10 +20,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/Payment" element={<Payment />} />
+        <Route path="/Payment" element={<Gallery />} />
 
         </Routes>
-     {/* <Footer /> */}
     </div>
     </Router>
   );
