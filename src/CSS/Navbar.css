@@ -5,8 +5,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: #a40202; /* Change the background color as needed */
-    color: white; /* Change the text color as needed */
+    background-color: #ffffff; /* Change the background color as needed */
+    color: rgb(255, 142, 29); /* Change the text color as needed */
   }
   
   .logo {
@@ -29,7 +29,7 @@
   .nav-links a {
     padding: 10px 15px; /* Add padding to each navigation link */
     text-decoration: none;
-    color: white; /* Change the text color of navigation links as needed */
+    color: rgb(221, 44, 44); /* Change the text color of navigation links as needed */
     font-size: 1.2rem; /* Increase font size */
     font-weight: bold; /* Add bold styling */
   }

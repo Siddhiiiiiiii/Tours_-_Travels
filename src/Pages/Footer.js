@@ -3,13 +3,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS/Footer.css';
+import logo from '../images/logo.png'
 
 const Footer = () => {
     return (
       <div className="footer" style={{ backgroundColor: '#333', color: '#fff', padding: '20px' }}>
         <div className="footer-section lic-section">
-          <h2>SIDHVED TOURS AND TRAVELS</h2>
-          <p>Providing trusted travel experience for over 10+ years.</p>
+          <h2>SIDDHESH TOURS AND TRAVELS</h2>
+          <p>Travel It’s the best investment you can make.Affordable travel. Unforgettable experiences.</p>
         </div>
         <div className="footer-section about-section">
           <h3>About</h3>
@@ -28,8 +29,9 @@ const Footer = () => {
           <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
         </div>
       <div className="footer-logo">
-      <img src="https://th.bing.com/th/id/OIP.QIg2ejWXEHoJ1xlhx5mQLgHaFe?rs=1&pid=ImgDetMain" />
-      <p>&copy; 2023 Your Company. All rights reserved.</p>
+      <img src={logo}
+      alt='Siddhesh tours and travels' />
+      <p>&copy; 2023 Siddhesh Travel. All rights reserved.</p>
       </div>
       
     </div>
