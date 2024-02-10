@@ -39,7 +39,6 @@ function App() {
         <Route path="/kerala" element={<Kerala />} />
        
         </Routes>
-     {/* <Footer /> */}
     </div>
     </Router>
   );

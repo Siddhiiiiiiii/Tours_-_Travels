@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="footer-section explore-section">
           <h3>Explore</h3>
           <Link to="/">Home</Link>
-          <Link to="/Services">Services</Link>
+          <Link to="/Gallery">Gallery</Link>
         </div>
         <div className="footer-section social-section">
           <h3>Social</h3>
