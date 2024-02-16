@@ -14,10 +14,10 @@ import Login from './Pages/Login';
 import Blog from './Pages/Blog';
 import Gallery from './Pages/Gallery';
 import Kerala from './Pages/PackageDetails.js/Kerala';
-
+import RegisterForm from './Pages/Register';
 
 function App() {
-
+  
   return (
     <Router>
     <div className="App">
@@ -30,6 +30,8 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Gallery" element={<Gallery />} />
         <Route path="/Login" element={<Login />} />
+     
+        <Route path="/Register" element={<RegisterForm />} />
 
         <Route path="/Package" element={<Itenary />} />
         <Route path="/Travel" element={<IndianDestination />} />

@@ -1,85 +1,75 @@
-// Login.js
 import React, { useState } from 'react';
-import { Link, useNavigate  } from 'react-router-dom';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { auth } from './firebase';
-// import { useHistory } from 'react-router-dom';
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {  useNavigate } from 'react-router-dom'; 
+import '../CSS/Login.css'; 
 
-const Login = () => {
+// Your Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBa-AtFuPM-bhEKsXNdWkUomro4q5ygVhM",
+  authDomain: "siddhesh-travels.firebaseapp.com",
+  projectId: "siddhesh-travels",
+  storageBucket: "siddhesh-travels.appspot.com",
+  messagingSenderId: "904772354648",
+  appId: "1:904772354648:web:ef0b35c57115f51aee802d",
+  measurementId: "G-5T38T4E404"
+};
+
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp); // Initialize auth here
+
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
-      await auth.signInWithEmailAndPassword(email, password);
-      console.log('Logged in successfully');
-      navigate('/dashboard'); // Redirect to the dashboard or another page on successful login
+      await signInWithEmailAndPassword(auth, email, password);
+      // User logged in successfully, redirect to dashboard
+      navigate('/Dashboard');
     } catch (error) {
-      console.error('Login failed:', error.message);
+      setErrorMessage(error.message);
     }
   };
 
-
-  const handleForgotPassword = () => {
-    // Implement your forgot password logic here
-    console.log('Forgot Password');
-  };
-
-  const handleSignUp = () => {
-    // Implement your sign up logic here
-    console.log('Sign Up');
-  };
-
   return (
-    <Container>
-      <Row className="justify-content-md-center mt-5">
-        <Col xs={12} md={6}>
-          <h1>Login Page</h1>
-          <Form onSubmit={handleLogin}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Login
-            </Button>
-
-            <Link to="/forgot-password" onClick={handleForgotPassword} className="ml-2">
-              Forgot Password?
-            </Link>
-          </Form>
-
-          <p className="mt-3">
-            Don't have an account?{' '}
-            <Link to="/signup" onClick={handleSignUp}>
-              Sign Up
-            </Link>
-          </p>
-        </Col>
-      </Row>
-    </Container>
+    <div className="login-container">
+      <h2>Login Form</h2>
+      <form onSubmit={handleLogin} className="login-form">
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+        <button type="submit" className="btn btn-primary">
+          Login
+        </button>
+      </form>
+      <div className="register-link">
+        Don't have an account? <a href="/Register">Register</a>
+      </div>
+    </div>
   );
 };
 
-export default Login;
+export default LoginForm;
