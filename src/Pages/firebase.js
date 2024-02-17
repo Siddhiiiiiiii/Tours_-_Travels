@@ -1,7 +1,13 @@
-// firebase.js
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import firebase from 'firebase/auth'; // Incorrect import
 
+// Import Firebase app and auth modules correctly
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBa-AtFuPM-bhEKsXNdWkUomro4q5ygVhM",
   authDomain: "siddhesh-travels.firebaseapp.com",
@@ -12,7 +18,8 @@ const firebaseConfig = {
   measurementId: "G-5T38T4E404"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const analytics = getAnalytics(app);
 
-export { auth };
+export default firebase; // Exporting the firebase instance

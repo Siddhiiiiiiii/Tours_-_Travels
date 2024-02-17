@@ -6,9 +6,9 @@
   }
   
   .carousel-container {
-    max-height: 900px; /* Adjust the maximum height as needed */
+    max-height: 900px; 
     margin-top: 10px;
-    overflow: hidden; /* Add this line to hide overflow */
+    overflow: hidden; 
   }
   
   .slick-slide {
@@ -33,7 +33,7 @@
     padding: 15px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: auto; /* Set height to auto */
+    height: auto; 
   }
   
   .image-container {
@@ -41,7 +41,7 @@
   }
   
   .image-container img {
-    width: 100%; /* Ensure the image takes the full width of its container */
-    height: auto; /* Set height to auto */
+    width: 100%; 
+    height: auto; 
   }
   
