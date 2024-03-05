@@ -15,6 +15,7 @@ import Blog from './Pages/Blog';
 import Gallery from './Pages/Gallery';
 import Kerala from './Pages/PackageDetails.js/Kerala';
 import RegisterForm from './Pages/Register';
+import Dashboard from './Pages/Dashboard';
 
 function App() {
   
@@ -39,7 +40,7 @@ function App() {
         {/* <Route path="/package/:id" element={<PackageDetails />} /> */}
         <Route path="/Blog" element={<Blog />} />
         <Route path="/kerala" element={<Kerala />} />
-       
+        <Route path="/Dashboard" element={<Dashboard />} />
         </Routes>
     </div>
     </Router>
