@@ -20,6 +20,9 @@ import Destination from './Pages/Destination';
 import SpecialPackage from './components/SpceialPackage';
 import Family from './Pages/Family';
 import DashNav from './Pages/DashNav';
+import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
+import TourPackageList from './Pages/PackageDetails.js/TourPackageList';
+import BookingsDashboard from './Pages/AdminDashboard/Bookings';
 
 function App() {
   
@@ -54,6 +57,10 @@ function App() {
         {/* Dshboard Pages */}
         <Route path="/DashNav" element={<DashNav />} />
 
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/Bookings" element={<BookingsDashboard />} />
+        <Route path="/tour" element={<TourPackageList />} />
+       
        
         </Routes>
     </div>
