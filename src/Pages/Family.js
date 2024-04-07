@@ -1,44 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore'; // Import Firestore functions for querying documents
+import { db } from './firebase'; // Import your firebase configuration
+import DefaultImage from '../images/FAMILY.png'; // Import your static image
 
 const Family = () => {
-    const itineraryData = [
-        { id: 1, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 2, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 3, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 4, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 5, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 6, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 7, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 8, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 9, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 10, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 11, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 12, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 13, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 14, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 15, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 16, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 17, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 18, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-        { id: 19, destination: 'Lakshadweep', price: '₹15,000', duration: '12D/13N', image: 'https://th.bing.com/th/id/OIP.n6I6bh0IC4MDpq7IhJY6XQHaEo?rs=1&pid=ImgDetMain', description: 'Explore the beautiful islands of Lakshadweep with our special family package.' },
-        { id: 20, destination: 'Maharashtra', price: '₹10,000', duration: '10D/11N', image: 'https://th.bing.com/th/id/OIP.7JhMLhC5_NST8k5tTj7SHwHaEj?rs=1&pid=ImgDetMain', description: 'Discover the rich cultural heritage and scenic beauty of Maharashtra with our family package.' },
-            
-        // Add more packages as needed
-    ];
-    return (
-      <div className="container">
+  const [itineraryData, setItineraryData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'tourPackages'));
+        const data = [];
+        querySnapshot.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        console.log('Fetched Data:', data); // Log fetched data
+        setItineraryData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div className="container">
       <h1 className="mt-5 mb-4">Special Family Packages</h1>
       {itineraryData.map(item => (
         <Link key={item.id} to={`/package/${item.id}`} className="text-decoration-none text-dark">
           <div className="row mb-4 border p-3">
             <div className="col-md-4">
-              <img src={item.image} alt={item.destination} className="img-fluid" />
+              <img src={item.image || DefaultImage} alt={item.destination} className="img-fluid" />
             </div>
             <div className="col-md-8 d-flex align-items-center justify-content-end">
               <div className="text-right">
-                <h3>{item.destination}</h3>
-                <p>{item.description}</p>
+                <h3 style={{ fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>{item.PackageName}</h3> {/* Font size, weight, and alignment */}
+                <p style={{ textAlign: 'center' }}>{item.description}</p> {/* Alignment */}
               </div>
               <div style={verticalLineStyle}></div>
               <div>
@@ -54,14 +53,11 @@ const Family = () => {
   );
 };
 
-  
-  // Inline CSS styles using template literals
-  const verticalLineStyle = {
-    borderLeft: '1px solid #ccc',
-    height: '100%',
-    margin: '0 15px', // Adjust the margin as needed
-  };
-  
-  export default Family;
+// Inline CSS styles using template literals
+const verticalLineStyle = {
+  borderLeft: '1px solid #ccc',
+  height: '100%',
+  margin: '0 15px', // Adjust the margin as needed
+};
 
-
+export default Family;
