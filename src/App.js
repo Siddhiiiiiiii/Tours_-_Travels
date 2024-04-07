@@ -19,6 +19,7 @@ import Dashboard from './Pages/Dashboard';
 import Destination from './Pages/Destination';
 import SpecialPackage from './components/SpceialPackage';
 import Family from './Pages/Family';
+import TourView from './Pages/AdminDashboard/TourView';
 import DashNav from './Pages/DashNav';
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
 import TourPackageList from './Pages/PackageDetails.js/TourPackageList';
@@ -48,7 +49,7 @@ function App() {
         <Route path="/Travel" element={<IndianDestination />} />
         
          <Route path="/Family" element={<Family />} />
-
+         <Route path="/package/:id" element={<TourView />} />
 
         {/* <Route path="/package/:id" element={<PackageDetails />} /> */}
         <Route path="/Blog" element={<Blog />} />
@@ -68,6 +69,8 @@ function App() {
 
          {/* Payment in rupees */}
          <Route path="/payment" element={<UPIPayment/>} />
+        
+       
         </Routes>
     </div>
     </Router>

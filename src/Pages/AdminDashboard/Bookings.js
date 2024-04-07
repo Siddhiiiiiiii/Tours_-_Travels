@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase'; // Import your firebase configuration
+import Sidebar from './Sidebar';
+import { Navbar } from 'react-bootstrap';
 
 const BookingsDashboard = () => {
   const [bookings, setBookings] = useState([]);
@@ -23,6 +25,9 @@ const BookingsDashboard = () => {
   }, []);
 
   return (
+    <>
+  
+      <Sidebar/>
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-4">Bookings Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -37,6 +42,7 @@ const BookingsDashboard = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
