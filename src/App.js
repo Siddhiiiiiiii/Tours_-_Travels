@@ -23,6 +23,8 @@ import DashNav from './Pages/DashNav';
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
 import TourPackageList from './Pages/PackageDetails.js/TourPackageList';
 import BookingsDashboard from './Pages/AdminDashboard/Bookings';
+import ClientDashboard from './Pages/ClientDashboard/ClientDashboard';
+import UPIPayment from '../src/PaymentComponent/Payment'
 
 function App() {
   
@@ -61,7 +63,11 @@ function App() {
         <Route path="/Bookings" element={<BookingsDashboard />} />
         <Route path="/tour" element={<TourPackageList />} />
        
-       
+         {/* Client Dashboard pages */}
+         <Route path="/client" element={<ClientDashboard/>} />
+
+         {/* Payment in rupees */}
+         <Route path="/payment" element={<UPIPayment/>} />
         </Routes>
     </div>
     </Router>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Kerala = () => {
   return (
@@ -25,7 +26,9 @@ const Kerala = () => {
               <li>Pickup & Drop: Munnar Hotel / Home</li>
               <li>Places Covered: Flower Garden, Photo Point, Honey Tree, Botanical Garden, Mattupetty Dam, DTPC Boating, Shooting Point, Echo Point, Kundala Dam, and Top Station.</li>
             </ul>
+            <Link to="/payment">
             <button className="btn btn-primary btn-lg">Book Now</button>
+            </Link>
           </div>
         </div>
       </div>
