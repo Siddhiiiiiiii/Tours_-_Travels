@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore'; 
 import { db } from './firebase'; 
-import DefaultImage from '../images/FAMILY.png'; 
+import DefaultImage from '../images/INDIAN.png'; 
 
 const Family = () => {
   const [itineraryData, setItineraryData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,13 +18,19 @@ const Family = () => {
         });
         console.log('Fetched Data:', data); 
         setItineraryData(data);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="container">
@@ -32,7 +39,11 @@ const Family = () => {
         <Link key={item.id} to={`/package/${item.id}`} className="text-decoration-none text-dark">
           <div className="row mb-4 border p-3">
             <div className="col-md-4">
-              <img src={item.image || DefaultImage} alt={item.destination} className="img-fluid" />
+              {item && item.image ? (
+                <img src={item.image} alt={item.destination} className="img-fluid" />
+              ) : (
+                <img src={DefaultImage} alt="Default" className="img-fluid" />
+              )}
             </div>
             <div className="col-md-8 d-flex align-items-center justify-content-end">
               <div className="text-right">

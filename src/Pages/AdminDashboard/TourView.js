@@ -39,8 +39,8 @@ const TourView = () => {
   const handleBookNow = () => {
     setShowPaymentOptions(true);
   };
+  
   const handlePaymentOptionSelect = (paymentOption) => {
-
     const paymentWindow = window.open('', '_blank');
   
     switch (paymentOption) {
@@ -56,65 +56,70 @@ const TourView = () => {
 
     setShowPaymentOptions(false);
   };
-  
 
   return (
     <Container fluid>
-      <img src={tourPackage.image || DefaultImage} alt={tourPackage.destination} style={{ width: '100%', height: '100vh', objectFit: 'fill' }} />
-      <Container>
-        <Row className="justify-content-center">
-          <Col lg={8}>
-            <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left' }}>
-              <h2 style={{ color: '#ff69b4', textAlign: 'center', fontSize: '36px', marginBottom: '20px' }}>{tourPackage.PackageName}</h2>
-              <p>{tourPackage.description}</p> 
-            </div>
-          </Col>
-          <Col lg={4}>
-            <Card style={{
-              border: '1px solid #ddd',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-              width: '250px',
-              height: 'fit-content', 
-              marginRight: '20px',
-              backgroundColor: '#ffffff',
-              marginBottom: '20px', 
-            }}>
-              <Card.Body>
-                <Card.Title>Book Now</Card.Title>
-                <Card.Text>Price: {price}</Card.Text> 
-                <Button variant="primary" onClick={handleBookNow}>Book Now</Button> 
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <hr className="my-4" />
-          </Col>
-        </Row>
-        <Row className="justify-content-center">
-          <Col lg={8}>
-            <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left' }}>
-              <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#ff69b4' }}>Itinerary (Day Wise)</h3>
-              <p>{tourPackage.itineraryDayWise}</p> 
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      {tourPackage ? (
+        <>
+          <img src={tourPackage.image || DefaultImage} alt={tourPackage.destination} style={{ width: '100%', height: '100vh', objectFit: 'fill' }} />
+          <Container>
+            <Row className="justify-content-center">
+              <Col lg={8}>
+                <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left' }}>
+                  <h2 style={{ color: '#ff69b4', textAlign: 'center', fontSize: '36px', marginBottom: '20px' }}>{tourPackage.PackageName}</h2>
+                  <p>{tourPackage.description}</p> 
+                </div>
+              </Col>
+              <Col lg={4}>
+                <Card style={{
+                  border: '1px solid #ddd',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                  width: '250px',
+                  height: 'fit-content', 
+                  marginRight: '20px',
+                  backgroundColor: '#ffffff',
+                  marginBottom: '20px', 
+                }}>
+                  <Card.Body>
+                    <Card.Title>Book Now</Card.Title>
+                    <Card.Text>Price: {price}</Card.Text> 
+                    <Button variant="primary" onClick={handleBookNow}>Book Now</Button> 
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <hr className="my-4" />
+              </Col>
+            </Row>
+            <Row className="justify-content-center">
+              <Col lg={8}>
+                <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left' }}>
+                  <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#ff69b4' }}>Itinerary (Day Wise)</h3>
+                  <p>{tourPackage.itineraryDayWise}</p> 
+                </div>
+              </Col>
+            </Row>
+          </Container>
 
-      <Modal show={showPaymentOptions} onHide={() => setShowPaymentOptions(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Choose Payment Option</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-  <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-    <Button variant="primary" onClick={() => handlePaymentOptionSelect('UPI/Card')}>UPI/Card</Button>
-    <Button variant="primary" onClick={() => handlePaymentOptionSelect('Ether')}>Ether</Button>
-  </div>
-</Modal.Body>
-      </Modal>
+          <Modal show={showPaymentOptions} onHide={() => setShowPaymentOptions(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Choose Payment Option</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                <Button variant="primary" onClick={() => handlePaymentOptionSelect('UPI/Card')}>UPI/Card</Button>
+                <Button variant="primary" onClick={() => handlePaymentOptionSelect('Ether')}>Ether</Button>
+              </div>
+            </Modal.Body>
+          </Modal>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </Container>
   );
 };
