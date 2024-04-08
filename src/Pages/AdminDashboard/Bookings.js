@@ -9,7 +9,7 @@ const BookingsDashboard = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        // Fetch bookings data from Firestore
+       
         const querySnapshot = await db.collection('bookings').get();
         const bookingsData = querySnapshot.docs.map(doc => ({
           id: doc.id,

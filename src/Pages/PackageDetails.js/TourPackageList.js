@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getFirestore, collection, query, getDocs } from 'firebase/firestore';
-import { db } from '../firebase'; // Assuming you have Firebase initialized properly
+import { db } from '../firebase'; 
 
 const TourPackageList = () => {
   const [tourPackages, setTourPackages] = useState([]);

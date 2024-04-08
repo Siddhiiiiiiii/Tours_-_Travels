@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore'; // Import Firestore functions for querying documents
-import { db } from '../firebase'; // Import your firebase configuration
-import { Container, Row, Col, Card, Button } from 'react-bootstrap'; // Import Bootstrap components
-import DefaultImage from '../../images/FAMILY.png'; // Import your static image
+import { doc, getDoc } from 'firebase/firestore'; 
+import { db } from '../firebase';
+import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap'; 
+import DefaultImage from '../../images/FAMILY.png'; 
 
 const TourView = () => {
-  const { id } = useParams(); // Extract the tour package ID from the URL params
+  const { id } = useParams(); 
   const [tourPackage, setTourPackage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showPaymentOptions, setShowPaymentOptions] = useState(false);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const fetchTourPackage = async () => {
@@ -17,7 +19,9 @@ const TourView = () => {
         const docRef = doc(db, 'tourPackages', id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setTourPackage({ id: docSnap.id, ...docSnap.data() });
+          const data = docSnap.data();
+          setTourPackage({ id: docSnap.id, ...data });
+          setPrice(data.price);
         } else {
           setError('Tour package not found');
         }
@@ -32,76 +36,85 @@ const TourView = () => {
     fetchTourPackage();
   }, [id]);
 
-  if (loading) {
-    return <div>Loading...</div>; // Render a loading indicator while data is being fetched
-  }
+  const handleBookNow = () => {
+    setShowPaymentOptions(true);
+  };
+  const handlePaymentOptionSelect = (paymentOption) => {
 
-  if (error) {
-    return <div>Error: {error}</div>; // Render an error message if an error occurred
-  }
+    const paymentWindow = window.open('', '_blank');
+  
+    switch (paymentOption) {
+      case 'UPI/Card':
+        paymentWindow.location.href = 'url/to/upi_card_payment_page';
+        break;
+      case 'Ether':
+        paymentWindow.location.href = 'url/to/ether_payment_page';
+        break;
+      default:
+        break;
+    }
 
-  if (!tourPackage) {
-    return <div>No tour package found</div>; // Render a message if no tour package is found
-  }
+    setShowPaymentOptions(false);
+  };
+  
 
   return (
     <Container fluid>
-      {/* Image */}
       <img src={tourPackage.image || DefaultImage} alt={tourPackage.destination} style={{ width: '100%', height: '100vh', objectFit: 'fill' }} />
-
-      {/* Main content */}
       <Container>
         <Row className="justify-content-center">
           <Col lg={8}>
             <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left' }}>
-              {/* Package Name */}
               <h2 style={{ color: '#ff69b4', textAlign: 'center', fontSize: '36px', marginBottom: '20px' }}>{tourPackage.PackageName}</h2>
-              
-              {/* Description */}
-              <p>{tourPackage.description}</p> {/* Display tour package description */}
-
-              {/* Other tour package details can be displayed here */}
+              <p>{tourPackage.description}</p> 
             </div>
           </Col>
           <Col lg={4}>
-            {/* Booking Card */}
             <Card style={{
               border: '1px solid #ddd',
               borderRadius: '8px',
               overflow: 'hidden',
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
               width: '250px',
-              height: 'fit-content', // Adjusted height to fit content
+              height: 'fit-content', 
               marginRight: '20px',
               backgroundColor: '#ffffff',
-              marginBottom: '20px', // Add margin bottom
+              marginBottom: '20px', 
             }}>
               <Card.Body>
                 <Card.Title>Book Now</Card.Title>
-                <Card.Text>Price: {tourPackage.price}</Card.Text> {/* Display tour package price */}
-                <Button variant="primary">Book Now</Button> {/* Reverted to default style */}
+                <Card.Text>Price: {price}</Card.Text> 
+                <Button variant="primary" onClick={handleBookNow}>Book Now</Button> 
               </Card.Body>
             </Card>
           </Col>
         </Row>
-
-        {/* Responsive Break */}
         <Row>
           <Col>
             <hr className="my-4" />
           </Col>
         </Row>
-
-        {/* Itinerary (Day Wise) */}
         <Row className="justify-content-center">
           <Col lg={8}>
             <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left' }}>
               <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#ff69b4' }}>Itinerary (Day Wise)</h3>
-              <p>{tourPackage.itineraryDayWise}</p> {/* Display tour package itinerary day-wise */}
+              <p>{tourPackage.itineraryDayWise}</p> 
             </div>
           </Col>
         </Row>
       </Container>
+
+      <Modal show={showPaymentOptions} onHide={() => setShowPaymentOptions(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Choose Payment Option</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+  <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+    <Button variant="primary" onClick={() => handlePaymentOptionSelect('UPI/Card')}>UPI/Card</Button>
+    <Button variant="primary" onClick={() => handlePaymentOptionSelect('Ether')}>Ether</Button>
+  </div>
+</Modal.Body>
+      </Modal>
     </Container>
   );
 };

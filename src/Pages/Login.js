@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import {  useNavigate } from 'react-router-dom'; 
+import { getDatabase, ref, get } from 'firebase/database';
+import { useNavigate } from 'react-router-dom'; 
 import '../CSS/Login.css'; 
 
-// Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBa-AtFuPM-bhEKsXNdWkUomro4q5ygVhM",
   authDomain: "siddhesh-travels.firebaseapp.com",
@@ -15,21 +15,34 @@ const firebaseConfig = {
   measurementId: "G-5T38T4E404"
 };
 
-// Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp); // Initialize auth here
+const auth = getAuth(firebaseApp);
+const database = getDatabase(firebaseApp);
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [role, setRole] = useState('user'); // Default role is 'user'
   const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      // User logged in successfully, redirect to dashboard
+      if (role === 'admin') {
+        // Fetch admin credentials from Realtime Database
+        const adminRef = ref(database, 'Admin');
+        const adminSnapshot = await get(adminRef);
+        if (adminSnapshot.exists()) {
+          const adminData = adminSnapshot.val();
+          await signInWithEmailAndPassword(auth, adminData.Email, adminData.password);
+        } else {
+          throw new Error('Admin credentials not found');
+        }
+      } else {
+        // For regular user, proceed with regular authentication
+        await signInWithEmailAndPassword(auth, email, password);
+      }
       navigate('/Dashboard');
     } catch (error) {
       setErrorMessage(error.message);
@@ -59,6 +72,17 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+        </div>
+        <div className="form-group">
+          <label>Role</label>
+          <select
+            className="form-control"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
         {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
         <button type="submit" className="btn btn-primary">

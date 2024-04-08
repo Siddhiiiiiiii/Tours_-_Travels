@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { collection, getDocs } from 'firebase/firestore'; // Import Firestore functions for querying documents
-import { db } from './firebase'; // Import your firebase configuration
-import DefaultImage from '../images/FAMILY.png'; // Import your static image
+import { collection, getDocs } from 'firebase/firestore'; 
+import { db } from './firebase'; 
+import DefaultImage from '../images/FAMILY.png'; 
 
 const Family = () => {
   const [itineraryData, setItineraryData] = useState([]);
@@ -15,7 +15,7 @@ const Family = () => {
         querySnapshot.forEach((doc) => {
           data.push({ id: doc.id, ...doc.data() });
         });
-        console.log('Fetched Data:', data); // Log fetched data
+        console.log('Fetched Data:', data); 
         setItineraryData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -36,8 +36,8 @@ const Family = () => {
             </div>
             <div className="col-md-8 d-flex align-items-center justify-content-end">
               <div className="text-right">
-                <h3 style={{ fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>{item.PackageName}</h3> {/* Font size, weight, and alignment */}
-                <p style={{ textAlign: 'center' }}>{item.description}</p> {/* Alignment */}
+                <h3 style={{ fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>{item.PackageName}</h3> 
+                <p style={{ textAlign: 'center' }}>{item.description}</p> 
               </div>
               <div style={verticalLineStyle}></div>
               <div>
@@ -53,11 +53,10 @@ const Family = () => {
   );
 };
 
-// Inline CSS styles using template literals
 const verticalLineStyle = {
   borderLeft: '1px solid #ccc',
   height: '100%',
-  margin: '0 15px', // Adjust the margin as needed
+  margin: '0 15px', 
 };
 
 export default Family;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { collection, addDoc } from 'firebase/firestore'; // Import Firestore functions for adding documents
-import { db, storage } from '../firebase'; // Import your firebase configuration
-
+import { collection, addDoc } from 'firebase/firestore'; 
+import { db, storage } from '../firebase'; 
 const TourPackages = () => {
   const [formData, setFormData] = useState({
     PackageName: '',
@@ -12,9 +11,9 @@ const TourPackages = () => {
     duration: '',
     accommodation: '',
     description: '',
-    itineraryDayWise: '', // New field for itinerary day-wise
-    image: null, // Store the image file
-    imageURL: '' // Store the image URL after upload
+    itineraryDayWise: '', 
+    image: null, 
+    imageURL: '' 
   });
 
   const [errors, setErrors] = useState({});
@@ -24,7 +23,7 @@ const TourPackages = () => {
     if (files) {
       setFormData((prevFormData) => ({
         ...prevFormData,
-        [name]: files[0], // Store the file object for image
+        [name]: files[0], 
       }));
     } else {
       setFormData((prevFormData) => ({
@@ -38,21 +37,21 @@ const TourPackages = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        // Upload image to Firebase Storage
+      
         const imageRef = storage.ref().child(formData.image.name);
         await imageRef.put(formData.image);
         const imageURL = await imageRef.getDownloadURL();
 
-        // Add image URL to form data
+      
         setFormData((prevFormData) => ({
           ...prevFormData,
           imageURL: imageURL,
         }));
 
-        // Add form data to Firestore
+      
         const docRef = await addDoc(collection(db, 'tourPackages'), formData);
         console.log('Form data stored successfully with ID: ', docRef.id);
-        // Clear form fields after submission
+      
         setFormData({
           PackageName: '',
           itineraryDetails: '',
@@ -62,7 +61,7 @@ const TourPackages = () => {
           duration: '',
           accommodation: '',
           description: '',
-          itineraryDayWise: '', // Reset itinerary day-wise field
+          itineraryDayWise: '', 
           image: null,
           imageURL: ''
         });
@@ -80,7 +79,7 @@ const TourPackages = () => {
       errors.PackageName = 'Package Name is required';
       isValid = false;
     }
-    // Add similar validation for other fields
+
 
     setErrors(errors);
     return isValid;
@@ -211,7 +210,7 @@ const TourPackages = () => {
               id="image"
               name="image"
               onChange={handleChange}
-              accept="image/*" // Allow only image files
+              accept="image/*" 
               className="w-full border rounded px-3 py-2"
             />
             {errors.image && <p className="text-red-500">{errors.image}</p>}
