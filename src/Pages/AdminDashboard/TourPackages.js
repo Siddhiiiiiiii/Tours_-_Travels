@@ -38,15 +38,15 @@ const TourPackages = () => {
     if (validateForm()) {
       try {
       
-        const imageRef = storage.ref().child(formData.image.name);
-        await imageRef.put(formData.image);
-        const imageURL = await imageRef.getDownloadURL();
+        // const imageRef = storage.ref().child(formData.image.name);
+        // await imageRef.put(formData.image);
+        // const imageURL = await imageRef.getDownloadURL();
 
       
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          imageURL: imageURL,
-        }));
+        // setFormData((prevFormData) => ({
+        //   ...prevFormData,
+        //   imageURL: imageURL,
+        // }));
 
       
         const docRef = await addDoc(collection(db, 'tourPackages'), formData);
@@ -203,7 +203,7 @@ const TourPackages = () => {
             {errors.itineraryDayWise && <p className="text-red-500">{errors.itineraryDayWise}</p>}
           </div>
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label className="block mb-1" htmlFor="image">Upload Image</label>
             <input
               type="file"
@@ -214,7 +214,7 @@ const TourPackages = () => {
               className="w-full border rounded px-3 py-2"
             />
             {errors.image && <p className="text-red-500">{errors.image}</p>}
-          </div>
+          </div> */}
 
           <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
         </form>
