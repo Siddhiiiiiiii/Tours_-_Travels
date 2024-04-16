@@ -1,31 +1,7 @@
-/* Footer.css */
+.footer-bg-main {
+  background-color: #000814; /* Main footer background color */
+}
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  .footer-section {
-    margin-right: 20px;
-  }
-  
-  .footer-section h2,
-  .footer-section h3 {
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-  
-  .footer-section a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .footer-logo img {
-    max-width: 100px; /* Adjust the maximum width of the logo */
-  }
-  
+.footer-bg-bottom {
+  background-color: #E6B800; /* Slightly darker for contrast */
+}

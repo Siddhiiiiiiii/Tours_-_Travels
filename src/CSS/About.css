@@ -6,3 +6,16 @@
     height: 400px;
     padding-top: 10px;
   }
+
+
+  .bg-custom {
+    background-color: #FFF300;
+}
+
+.bg-customfeedback{
+  background-color: #001D3D;
+}
+
+.bg-custom3{
+  background-color: #FFD60A;
+}
