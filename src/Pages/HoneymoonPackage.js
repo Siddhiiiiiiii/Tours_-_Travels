@@ -4,23 +4,23 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebase'; 
 import DefaultImage from '../images/INDIAN.png'; 
 
-const Family = () => {
+const HoneymoonPackage = () => {
   const [itineraryData, setItineraryData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'tourPackages'));
+        const querySnapshot = await getDocs(collection(db, 'honeymoonPackages')); // Update collection name
         const data = [];
         querySnapshot.forEach((doc) => {
           data.push({ id: doc.id, ...doc.data() });
         });
-        console.log('Fetched Data:', data); 
+        console.log('Fetched Honeymoon Packages:', data); 
         setItineraryData(data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching honeymoon packages:', error);
         setLoading(false);
       }
     };
@@ -34,13 +34,13 @@ const Family = () => {
 
   return (
     <div className="container">
-      <h1 className="mt-5 mb-4">Special Family Packages</h1>
+      <h1 className="mt-5 mb-4">Special Honeymoon Packages</h1>
       {itineraryData.map(item => (
         <Link key={item.id} to={`/package/${item.id}`} className="text-decoration-none text-dark">
           <div className="row mb-4 border p-3">
             <div className="col-md-4">
-              {item && item.imageURL ? (
-                <img src={item.imageURL} alt={item.destination} className="img-fluid" />
+              {item && item.image ? (
+                <img src={item.image} alt={item.destination} className="img-fluid" />
               ) : (
                 <img src={DefaultImage} alt="Default" className="img-fluid" />
               )}
@@ -70,4 +70,4 @@ const verticalLineStyle = {
   margin: '0 15px', 
 };
 
-export default Family;
+export default HoneymoonPackage;

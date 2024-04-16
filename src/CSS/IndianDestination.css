@@ -1,24 +1,31 @@
-/* TravelCarousel.css */
+/* Updated IndianDestination.css */
 
 .carousel-card {
-    width: 100%;
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    margin-right: 20px; /* Add margin to create space between cards */
-  }
-  
-  .carousel-card h3 {
-    margin-bottom: 0;
-  }
-  
-  .carousel-card p {
-    margin-top: 0;
-    font-size: 1.2rem;
-  }
-  
+  width: 100%;
+  height: 300px; 
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  padding: 20px;
+  margin-right: 20px; 
+  border-radius: 20px;
+}
+
+.card-text {
+  padding: 10px;
+}
+
+.card-text h3 {
+  margin: 0;
+  color: rgb(0, 0, 0); 
+  font-size: 1.2rem; /* Adjust the font size as needed */
+}
+
+.card-text p {
+  margin: 0;
+  color: rgb(0, 0, 0); 
+  font-size: 1rem; /* Adjust the font size as needed */
+}

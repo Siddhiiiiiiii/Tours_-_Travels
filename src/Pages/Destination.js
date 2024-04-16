@@ -1,12 +1,14 @@
 import React from 'react';
 import IndianDestination from '../components/IndianDestinations';
+import Family from './Family';
 
 
 const Destination = () => {
   return (
-  
-      <IndianDestination/>
-   
+  <div>
+      {/* <IndianDestination/> */}
+      <Family/>
+   </div>
   )
 }
 
