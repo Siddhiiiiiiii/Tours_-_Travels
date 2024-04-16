@@ -41,14 +41,13 @@ const TourView = () => {
   };
   
   const handlePaymentOptionSelect = (paymentOption) => {
-    const paymentWindow = window.open('', '_blank');
-  
+    
     switch (paymentOption) {
       case 'UPI/Card':
-        paymentWindow.location.href = 'url/to/upi_card_payment_page';
+        window.location.href = '/payment';
         break;
       case 'Ether':
-        paymentWindow.location.href = 'url/to/ether_payment_page';
+        window.location.href = '';
         break;
       default:
         break;
