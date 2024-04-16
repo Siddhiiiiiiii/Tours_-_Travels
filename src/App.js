@@ -26,6 +26,8 @@ import TourPackageList from './Pages/PackageDetails.js/TourPackageList';
 import BookingsDashboard from './Pages/AdminDashboard/Bookings';
 import ClientDashboard from './Pages/ClientDashboard/ClientDashboard';
 import UPIPayment from '../src/PaymentComponent/Payment'
+import PaymentPage from './PaymentComponent/PaymentPage';
+import DummyPayment from './PaymentComponent/DummyPayment';
 import HoneymoonPackage from './Pages/HoneymoonPackage';
 import HoneymoonTourView from './Pages/HoneymoonTourView';
 
@@ -78,7 +80,11 @@ function App() {
          {/* Payment in rupees */}
          <Route path="/payment" element={<UPIPayment/>} />
         
-       
+        {/* Payment in ether */}
+        <Route path="/PaymentPage" element={<PaymentPage/>} />
+
+        <Route path="/Dummy" element={<DummyPayment/>} />
+
         </Routes>
     </div>
     </Router>

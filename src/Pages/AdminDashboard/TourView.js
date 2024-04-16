@@ -47,6 +47,7 @@ const TourView = () => {
         window.location.href = '/payment';
         break;
       case 'Ether':
+        window.location.href = '/paymentPage';
         window.location.href = '';
         break;
       default:
