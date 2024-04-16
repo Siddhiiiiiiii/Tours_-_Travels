@@ -28,6 +28,8 @@ import ClientDashboard from './Pages/ClientDashboard/ClientDashboard';
 import UPIPayment from '../src/PaymentComponent/Payment'
 import PaymentPage from './PaymentComponent/PaymentPage';
 import DummyPayment from './PaymentComponent/DummyPayment';
+import HoneymoonPackage from './Pages/HoneymoonPackage';
+import HoneymoonTourView from './Pages/HoneymoonTourView';
 
 function App() {
   
@@ -49,9 +51,15 @@ function App() {
 
         <Route path="/Package" element={<Itenary />} />
         <Route path="/Travel" element={<IndianDestination />} />
+
+         <Route path="/package/:id" element={<TourView />} />
         
          <Route path="/Family" element={<Family />} />
          <Route path="/package/:id" element={<TourView />} />
+
+
+         <Route path="/Honeymoon" element={<HoneymoonPackage />} />
+         <Route path="/package/:id" element={<HoneymoonTourView />} />
 
         {/* <Route path="/package/:id" element={<PackageDetails />} /> */}
         <Route path="/Blog" element={<Blog />} />
