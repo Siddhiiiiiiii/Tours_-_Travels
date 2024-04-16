@@ -9,7 +9,13 @@ import Family from '../images/FAMILY.png';
 import Indian from '../images/INDIAN.png';
 
 const Carousel = () => {
-  const images = [kedarnath, Honeymoon, Family, Indian];
+  const images = [
+    kedarnath,
+    Honeymoon,
+    Family,
+    Indian,
+    { title: "Indian", link: "https://plus.unsplash.com/premium_photo-1661904509551-6570836702e8?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+  ];
 
   const settings = {
     dots: true,
@@ -22,16 +28,24 @@ const Carousel = () => {
   };
 
   return (
-    <div className="container-fluid" >
+    <div className="container-fluid">
       <div className="carousel-container">
         <Slider {...settings}>
           {images.map((image, index) => (
             <div key={index}>
-              <img
-                src={image}
-                alt={`Slide ${index + 1}`}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+              {typeof image === 'string' ? (
+                <img
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              ) : (
+                <img
+                  src={image.link}
+                  alt={image.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              )}
             </div>
           ))}
         </Slider>

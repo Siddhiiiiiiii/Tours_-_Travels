@@ -5,8 +5,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background-color: #ffffff; /* Change the background color as needed */
-  color: rgb(255, 142, 29); /* Change the text color as needed */
+  background-color: #001D3D; /* Change the background color as needed */
+  color: rgb(255, 255, 255); /* Change the text color as needed */
 }
 
 .logo {
@@ -30,7 +30,7 @@
 .nav-links a {
   padding: 10px 15px; /* Add padding to each navigation link */
   text-decoration: none;
-  color: rgb(221, 44, 44); /* Change the text color of navigation links as needed */
+  color: #FFC300; /* Change the text color of navigation links as needed */
   font-size: 1.2rem; /* Increase font size */
   font-weight: bold; /* Add bold styling */
   position: relative; /* Add relative positioning for dropdown */
@@ -42,14 +42,14 @@
   position: absolute;
   top: 100%; /* Position dropdown below the navigation link */
   left: 0; /* Align dropdown with the navigation link */
-  background-color: #f9f9f9; /* Background color of dropdown */
+  background-color: #FFC300; /* Background color of dropdown */
   min-width: 160px; /* Minimum width of dropdown */
   border: 1px solid #ccc; /* Border of dropdown */
   z-index: 1; /* Ensure dropdown appears above other elements */
 }
 
 .nav-links .dropdown-content a {
-  color: black; /* Text color of dropdown items */
+  color: #001D3D; /* Text color of dropdown items */
   padding: 12px 16px; /* Padding of dropdown items */
   text-decoration: none; /* Remove default text decoration */
   display: block; /* Display dropdown items as block elements */

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore'; 
 import { db } from '../firebase';
 import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap'; 
-import DefaultImage from '../../images/FAMILY.png'; 
+import DefaultImage from '../../images/sumit-sourav-eSRtxPd9q1c-unsplash.jpg'; 
 
 const TourView = () => {
   const { id } = useParams(); 
@@ -60,7 +60,7 @@ const TourView = () => {
     <Container fluid>
       {tourPackage ? (
         <>
-          <img src={tourPackage.image || DefaultImage} alt={tourPackage.destination} style={{ width: '100%', height: '100vh', objectFit: 'fill' }} />
+          <img src={tourPackage.imageURL || DefaultImage} alt={tourPackage.destination} style={{ width: '100%', height: '100vh', objectFit: 'fill' }} />
           <Container>
             <Row className="justify-content-center">
               <Col lg={8}>
@@ -94,11 +94,17 @@ const TourView = () => {
                 <hr className="my-4" />
               </Col>
             </Row>
-            <Row className="justify-content-center">
-              <Col lg={8}>
-                <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left' }}>
+            <Row>
+              <Col style={{ width: '100%' }}>
+                <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '10px', textAlign: 'left', width: '100%' }}>
                   <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#ff69b4' }}>Itinerary (Day Wise)</h3>
-                  <p>{tourPackage.itineraryDayWise}</p> 
+                  {tourPackage.itineraryDayWise.split('Day ').map((day, index) => (
+                    <div key={index}>
+                      {index !== 0 && <hr />} {/* Add a horizontal line between each day */}
+                      <h4>Day {day.match(/^\d+/)}</h4> {/* Extract the day number */}
+                      <p>{day}</p> {/* Display the itinerary for the day */}
+                    </div>
+                  ))}
                 </div>
               </Col>
             </Row>
