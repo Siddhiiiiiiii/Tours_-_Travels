@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import '../CSS/Navbar.css';
-import logo from '../images/logo2.png'
+import logo from '../images/logo2.png';
 
 const Navbar = () => {
-
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleMouseEnter = () => {
@@ -13,11 +12,11 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setShowDropdown(false);
   };
+
   return (
     <div className="navbar">
       <div className="logo">
-        <img src={logo}
-        alt='Siddhesh Tours and Travels' />
+        <img src={logo} alt='Siddhesh Tours and Travels' />
         Siddhesh Tours and Travels
       </div>
       <div className="nav-links">
@@ -37,13 +36,11 @@ const Navbar = () => {
             </div>
           )}
         </div>
-    
         <a href="/About">About</a>
         <a href="/Contact">Contact</a>
         <a href="/Gallery">Gallery</a>
         <a href="/Login">Login</a>
         <a href="/Register">Register</a>
-
       </div>
     </div>
   );
