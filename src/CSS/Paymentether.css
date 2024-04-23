@@ -1,45 +1,45 @@
-/* Universal Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    margin-top: 10px; 
+}
+.p1{
+    margin-left: 0px;
+    padding: none;
+    font-size:14px ;
+    margin-right: 0%;
+}
+.p2{
+    font-size: 13px;
+    margin-left: 0%;
 }
 
-/* Reset with Additional Margin Top */
-* {
-    margin-top: 10px;
-}
-
-/* Combined Styles for .p1 and .p2 */
 .p1, .p2 {
-    margin-left: 0;
+    margin-left: 0%;
     padding: 5px;
 }
 
-/* Body Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
 }
 
-/* Payment Wrapper */
 .payment-wrapper {
-    display: flex;
-    justify-content: center;
+    display: flex; 
+    justify-content: center; 
     margin-top: 50px;
 }
 
-/* Payment Container */
 .payment-container {
-    max-width: 500px;
+    max-width: 500px; /* Increase the maximum width */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 10px;
+    margin: 0 10px; /* Add spacing between containers */
 }
 
-/* OR Text */
 .or-text {
     font-size: 18px;
     margin-top: 250px;
@@ -47,12 +47,10 @@ body {
     margin-right: 5px;
 }
 
-/* Payment Content */
 .payment-content {
     padding: 20px;
 }
 
-/* Payment Header */
 .payment-header {
     display: flex;
     justify-content: space-between;
@@ -65,19 +63,16 @@ body {
     font-size: 24px;
 }
 
-/* Countdown */
 .countdown {
     font-size: 16px;
     color: #777;
 }
 
-/* Payment Info */
 .payment-info {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Sub Box */
 .sub-box {
     display: flex;
     justify-content: space-between;
@@ -85,7 +80,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* QR Code Container */
 .qr-code-container {
     flex: 60;
     width: 150px;
@@ -93,9 +87,9 @@ body {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
-/* Network Address */
 .network-address {
     flex: 1;
     text-align: center;
@@ -106,7 +100,6 @@ body {
     margin: 5px 0;
 }
 
-/* Button Container */
 .button-container {
     display: flex;
     justify-content: space-between;
@@ -114,12 +107,17 @@ body {
     margin-top: 20px;
 }
 
-/* Button Styles */
+.metamask-button{
+    padding: 0%;
+    margin-left: auto;
+    max-width: 250px;
+}
+
 .button-container button, .metamask-button, .summary-button {
     background-color: #80b6d1;
     border: 5px solid;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Increased padding */
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -129,29 +127,25 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover Styles */
 .button-container button:hover, .metamask-button:hover, .summary-button:hover {
     background-color: #45a049;
 }
 
-/* Cancel and Summary Button Styles */
 .cancel-order-button, .summary-button {
     background-color: #80b6d1;
+    
 }
-
-.summary-button {
+.summary-button{
     margin-left: 90px;
 }
-
-.cancel-order-button {
-    margin-left: 0;
+.cancel-order-button{
+    margin-left: 0px;
 }
 
 .cancel-order-button:hover, .summary-button:hover {
     background-color: #45a049;
 }
 
-/* Status Message Styles */
 .status-message-container {
     margin-bottom: 20px;
 }
@@ -166,12 +160,12 @@ body {
     color: #f44336;
 }
 
-/* QR Code Styles */
 .qr-code {
     width: 80%; 
     height: 80%; 
     max-width: 100%; 
     max-height: 200px; 
     border: #0c0c0c solid;
+    margin-left: none;
     margin-top: 10px;
 }

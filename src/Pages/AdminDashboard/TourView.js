@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,  } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore'; 
 import { db } from '../firebase';
 import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap'; 
@@ -48,7 +48,6 @@ const TourView = () => {
         break;
       case 'Ether':
         window.location.href = '/paymentPage';
-        window.location.href = '';
         break;
       default:
         break;

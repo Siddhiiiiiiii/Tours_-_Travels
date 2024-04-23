@@ -30,6 +30,7 @@ import PaymentPage from './PaymentComponent/PaymentPage';
 import DummyPayment from './PaymentComponent/DummyPayment';
 import HoneymoonPackage from './Pages/HoneymoonPackage';
 import HoneymoonTourView from './Pages/HoneymoonTourView';
+import Whatisether from './Pages/Ether';
 
 function App() {
   
@@ -84,6 +85,9 @@ function App() {
         <Route path="/PaymentPage" element={<PaymentPage/>} />
 
         <Route path="/Dummy" element={<DummyPayment/>} />
+
+        {/* What is ether page */}
+        <Route path="/ether" element={<Whatisether/>} />
 
         </Routes>
     </div>
