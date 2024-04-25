@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate hook
-import { doc, getDoc } from 'firebase/firestore'; 
+import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap'; 
-import DefaultImage from '../../images/sumit-sourav-eSRtxPd9q1c-unsplash.jpg'; 
-import Payment from '../../PaymentComponent/Payment'; // Import Payment component
+import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap';
+import DefaultImage from '../../images/sumit-sourav-eSRtxPd9q1c-unsplash.jpg';
+import Payment from '../../PaymentComponent/Payment';
 import { addDoc, collection } from 'firebase/firestore';
 
 const TourView = () => {
@@ -14,9 +14,8 @@ const TourView = () => {
   const [error, setError] = useState(null);
   const [showPaymentOptions, setShowPaymentOptions] = useState(false);
   const [price, setPrice] = useState(0);
-  const [selectedPaymentOption, setSelectedPaymentOption] = useState(null);
-  const [paymentOption, setPaymentOption] = useState(null); // Define paymentOption state
-  const navigate = useNavigate(); // Use useNavigate hook
+  const [paymentOption, setPaymentOption] = useState(null);
+
 
   useEffect(() => {
     const fetchTourPackage = async () => {
@@ -42,21 +41,29 @@ const TourView = () => {
   }, [id]);
 
   const handleBookNow = () => {
-    // Show the payment options modal when "Book Now" is clicked
     setShowPaymentOptions(true);
   };
 
-  const handlePaymentOptionSelect = (paymentOption) => {
-    setSelectedPaymentOption(paymentOption); 
-    setShowPaymentOptions(false);
-    setPaymentOption(paymentOption); // Set the selected payment option
-    // Navigate to the appropriate payment page based on the selected payment option
-    if (paymentOption === 'UPI/Card') {
-      navigate('/payment');
-    } else if (paymentOption === 'Ether') {
-      // Pass the price as a URL parameter when navigating to PaymentPage
-      navigate(`/paymentPage?price=${price}`);
+  const handlePaymentOptionSelect = async (paymentOption) => {
+    switch (paymentOption) {
+      case 'UPI/Card':
+        await addDoc(collection(db, 'payments'), {
+          packageName: tourPackage.PackageName,
+          price: price,
+          paymentOption: 'UPI/Card',
+          // Add other payment data as needed
+        }); 
+        // Redirect to the payment page with the price and package ID as query parameters
+        window.location.href = `/payment?price=${price}&packageId=${tourPackage.id}`;
+        break;
+      case 'Ether':
+        window.location.href = '/paymentPage';
+        break;
+      default:
+        break;
     }
+
+    setShowPaymentOptions(false);
   };
 
   return (
@@ -127,6 +134,9 @@ const TourView = () => {
               {showPaymentOptions && paymentOption === 'UPI/Card' && <Payment price={price} />}
             </Modal.Body>
           </Modal>
+
+          {/* Pass the price to the Payment component */}
+          {showPaymentOptions && <Payment price={price} />}
         </>
       ) : (
         <p>Loading...</p>
