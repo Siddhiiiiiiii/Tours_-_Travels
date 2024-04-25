@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams,  } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore'; 
 import { db } from '../firebase';
 import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap'; 
@@ -41,7 +41,6 @@ const TourView = () => {
   };
   
   const handlePaymentOptionSelect = (paymentOption) => {
-    
     switch (paymentOption) {
       case 'UPI/Card':
         window.location.href = '/payment';
@@ -57,7 +56,7 @@ const TourView = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid style={{ backgroundColor: '#f0f0f0' }}> 
       {tourPackage ? (
         <>
           <img src={tourPackage.imageURL || DefaultImage} alt={tourPackage.destination} style={{ width: '100%', height: '100vh', objectFit: 'fill' }} />
