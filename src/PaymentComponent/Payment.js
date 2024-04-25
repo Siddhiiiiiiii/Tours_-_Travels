@@ -1,12 +1,23 @@
-"use client";
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import sha256 from "crypto-js/sha256";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
 const Payment = () => {
-  const [data, setData] = useState({ name: "", mobile: "" }); 
-  const amountInPaise = 4620000; // Constant amount in paise
+  const [data, setData] = useState({ name: "", mobile: "" });
+  const [price, setPrice] = useState(0);
+  const [packageId, setPackageId] = useState('');
+
+  // Parse query parameters from the URL
+  const searchParams = new URLSearchParams(useLocation().search);
+  const priceFromQuery = parseFloat(searchParams.get('price')) || 0;
+  const packageIdFromQuery = searchParams.get('packageId') || '';
+
+  useEffect(() => {
+    setPrice(priceFromQuery);
+    setPackageId(packageIdFromQuery);
+  }, [priceFromQuery, packageIdFromQuery]);
 
   const handleFormData = (e) => {
     const newData = { ...data, [e.target.name]: e.target.value };
@@ -21,7 +32,7 @@ const Payment = () => {
       merchantId: "PGTESTPAYUAT",
       merchantTransactionId: transactionId,
       merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
-      amount: amountInPaise,
+      amount: price * 100,
       redirectUrl: `http://localhost:3001/payment/success`,
       redirectMode: "POST",
       callbackUrl: `http://localhost:3000/payment/callback`,
@@ -96,12 +107,12 @@ const Payment = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="Amount" className="block text-sm font-medium leading-6 text-gray-900">Amount (in paise)</label>
+            <label htmlFor="Amount" className="block text-sm font-medium leading-6 text-gray-900">Amount</label>
             <div className="mt-2">
               <input
                 id="Amount"
                 name="amount"
-                value={amountInPaise}
+                value={price}
                 readOnly
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />

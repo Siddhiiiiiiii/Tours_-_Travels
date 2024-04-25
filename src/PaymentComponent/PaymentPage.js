@@ -98,7 +98,7 @@ function PaymentPage() {
               </div>
               <div className="network-address">
                 <p>Network: MAINNET<br /><br /></p>
-                <p>Address: <br />0x42DbA2E3E71CA92788A2C9C9EcBf7FBA229D108b</p>
+                <p>Address: <br />0x89E5b28c2F5Ff26b38F7a3Fa8Dee249352397424</p>
               </div>
             </div>
             <div className="button-container">
@@ -124,7 +124,7 @@ function PaymentPage() {
             <div className="button-container">
               <div className="payment-2">
                 <button onClick={onMainButtonClick}>Main Transaction Button</button>
-                <div className="metamask-button" address="0xcED8fbDd71d26783F6126728cb6a96D15a0B0B8B" amount="0.005"
+                <div className="metamask-button" address="0x89E5b28c2F5Ff26b38F7a3Fa8Dee249352397424" amount="0.005"
                   success-callback="onSuccess" error-callback="onError"></div>
               </div>
             </div>

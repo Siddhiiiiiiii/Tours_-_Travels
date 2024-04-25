@@ -27,10 +27,10 @@ import BookingsDashboard from './Pages/AdminDashboard/Bookings';
 import ClientDashboard from './Pages/ClientDashboard/ClientDashboard';
 import UPIPayment from '../src/PaymentComponent/Payment'
 import PaymentPage from './PaymentComponent/PaymentPage';
-import DummyPayment from './PaymentComponent/DummyPayment';
 import HoneymoonPackage from './Pages/HoneymoonPackage';
 import HoneymoonTourView from './Pages/HoneymoonTourView';
 import Whatisether from './Pages/Ether';
+
 
 function App() {
   
@@ -84,7 +84,6 @@ function App() {
         {/* Payment in ether */}
         <Route path="/PaymentPage" element={<PaymentPage/>} />
 
-        <Route path="/Dummy" element={<DummyPayment/>} />
 
         {/* What is ether page */}
         <Route path="/ether" element={<Whatisether/>} />

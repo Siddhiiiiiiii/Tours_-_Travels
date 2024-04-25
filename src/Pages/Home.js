@@ -29,8 +29,8 @@ const Home = () => {
           <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={Certificate} alt="blog"></img>
           <div class="p-6">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>
-            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Safety and Reliability</h1>
+            <p class="leading-relaxed mb-3">Make safety a top priority and communicate the measures you take to ensure the well-being of your customers throughout their travels. This could include trained staff, adherence to safety regulations, and contingency plans for emergencies.</p>
             <div class="flex items-center flex-wrap ">
               <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
                 <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -58,8 +58,8 @@ const Home = () => {
           <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={Thumbsup} alt="blog"></img>
           <div class="p-6">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The 400 Blows</h1>
-            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+            <h1 class="title-font text-lg font-medium text-gray-900 mb-3"><bold> Quality Accommodation </bold></h1>
+            <p class="leading-relaxed mb-3">Assure customers that they'll have comfortable and convenient accommodations and transportation throughout their journey. Highlight any partnerships with trusted hotels, airlines, or transportation providers to instill confidence in the quality of the experience.</p>
             <div class="flex items-center flex-wrap">
               <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
                 <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -87,8 +87,8 @@ const Home = () => {
           <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={Happy} alt="blog"></img>
           <div class="p-6">
             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Shooting Stars</h1>
-            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Ease of Booking and Customer Support</h1>
+            <p class="leading-relaxed mb-3">Emphasize the user-friendly booking process and the availability of responsive customer support. Let customers know that assistance is readily available should they have any questions or concerns before, during, or after their trip.</p>
             <div class="flex items-center flex-wrap ">
               <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
                 <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
