@@ -175,7 +175,7 @@ const About = () => {
         </div>
       </div>
 
-<Footer></Footer>
+
     </>
   )
 }
