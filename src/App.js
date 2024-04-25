@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Footer from './Pages/Footer';
 import Home from './Pages/Home';
 import Navbar from './Pages/Navbar';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
-import Payment from './Pages/Payment';
+import Payment from './Pages/Payment';  
 import Itenary from './components/PackageDetails';
 import IndianDestination from './components/IndianDestinations';
 import PackageDetails from './components/PackageDetails';
@@ -30,12 +30,14 @@ import PaymentPage from './PaymentComponent/PaymentPage';
 import HoneymoonPackage from './Pages/HoneymoonPackage';
 import HoneymoonTourView from './Pages/HoneymoonTourView';
 import Whatisether from './Pages/Ether';
+import { AuthProvider, useAuth  } from './Pages/AuthContext'; 
 
 
 function App() {
   
   return (
-    <Router>
+     <Router>
+        <AuthProvider> 
     <div className="App">
         <Navbar />
 
@@ -51,7 +53,7 @@ function App() {
         <Route path="/Register" element={<RegisterForm />} />
 
         <Route path="/Package" element={<Itenary />} />
-        <Route path="/Travel" element={<IndianDestination />} />
+        <Route path="/Destination/:id" element={<IndianDestination />} />
 
          <Route path="/package/:id" element={<TourView />} />
         
@@ -89,9 +91,30 @@ function App() {
         <Route path="/ether" element={<Whatisether/>} />
 
         </Routes>
+        
     </div>
+    <Footer/>
+    </AuthProvider>
     </Router>
   );
+}
+
+
+function PrivateRoute({ element, ...rest }) {
+  const { isAuthenticated } = useAuth();
+
+  return isAuthenticated() ? element : <Navigate to="/Login" />;
+}
+
+function LoginPage() {
+  const { isAuthenticated } = useAuth();
+
+  // If user is already authenticated, redirect to Dashboard
+  if (isAuthenticated()) {
+    return <Navigate to="/Dashboard" />;
+  }
+
+  return <Login />;
 }
 
 export default App;

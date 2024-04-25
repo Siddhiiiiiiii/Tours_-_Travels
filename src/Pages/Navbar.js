@@ -30,9 +30,9 @@ const Navbar = () => {
           {showDropdown && (
             <div className="dropdown-content">
               <a href="/Family">Family Tours</a>
-              <a href="/Honeymoon">Honeymoon Special</a>
+              {/* <a href="/Honeymoon">Honeymoon Special</a>
               <a href="/Solo">Solo Travel</a>
-              <a href="/Group">Group Special Travel</a>
+              <a href="/Group">Group Special Travel</a> */}
             </div>
           )}
         </div>

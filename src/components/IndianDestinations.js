@@ -58,14 +58,16 @@ const IndianDestination = () => {
             <div className="d-flex justify-content-between">
               {group.map((destination, index) => (
                 <div key={index} className="carousel-card">
-                  <Link
-                    to={`/destination/${destination.id}`}
-                    style={{ backgroundImage: `url(${destination.imageURL})`, height: '300px', backgroundSize: 'cover', backgroundPosition: 'center' }}
-                  />
-                  <div className="card-text">
-                    <h3>{destination.PackageName}</h3>
-                    <p>Starting Price: {destination.price}</p>
-                  </div>
+                 <Link
+  to={`/destination/${destination.id}`} 
+  style={{ backgroundImage: `url(${destination.imageURL})`, height: '300px', backgroundSize: 'cover', backgroundPosition: 'center' }}
+>
+  <div className="card-text">
+    <h3>{destination.PackageName}</h3>
+    <p>Starting Price: {destination.price}</p>
+  </div>
+</Link>
+
                 </div>
               ))}
             </div>

@@ -67,7 +67,7 @@ const TourView = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid style={{ backgroundColor: '#f0f0f0' }}> 
       {tourPackage ? (
         <>
           <img src={tourPackage.imageURL || DefaultImage} alt={tourPackage.destination} style={{ width: '100%', height: '100vh', objectFit: 'fill' }} />
