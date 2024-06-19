@@ -31,6 +31,7 @@ import HoneymoonPackage from './Pages/HoneymoonPackage';
 import HoneymoonTourView from './Pages/HoneymoonTourView';
 import Whatisether from './Pages/Ether';
 import { AuthProvider, useAuth  } from './Pages/AuthContext'; 
+import Chart from './Pages/AdminDashboard/Chart';
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/Bookings" element={<BookingsDashboard />} />
         <Route path="/tour" element={<TourPackageList />} />
+        <Route path="/admin_dashboard" element={<Chart/>} />
        
          {/* Client Dashboard pages */}
          <Route path="/client" element={<ClientDashboard/>} />
